@@ -1,0 +1,33 @@
+using System;
+using UnityEngine;
+
+public class BalloonPopper : MonoBehaviour
+{
+    [SerializeField]
+    private int clicksRequired = 4;
+    
+    [SerializeField]
+    private int currentClicks = 0;
+
+    [SerializeField]
+    private float scaleIncrease = 1.1f;
+
+    private void IncreaseSize()
+    {
+        transform.localScale *= scaleIncrease; // transform KNOWS you're referring to THIS object
+    }
+
+    private void OnMouseDown()
+    {
+        
+        if (currentClicks < clicksRequired)
+        {
+            IncreaseSize();
+            currentClicks++;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+}
