@@ -11,6 +11,9 @@ public class BalloonPopper : MonoBehaviour
 
     [SerializeField]
     private float scaleIncrease = 1.1f;
+    
+    [SerializeField]
+    private ScoreManager scoreManager;
 
     private void IncreaseSize()
     {
@@ -26,7 +29,8 @@ public class BalloonPopper : MonoBehaviour
             currentClicks++;
         }
         else
-        {
+        {   
+            scoreManager.IncreaseScore(1);
             Destroy(gameObject);
         }
     }
