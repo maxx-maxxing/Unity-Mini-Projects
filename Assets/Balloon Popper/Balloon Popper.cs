@@ -13,7 +13,7 @@ public class BalloonPopper : MonoBehaviour
     private float scaleIncrease = 1.1f;
     
     [SerializeField]
-    private ScoreManager scoreManager;
+    private ScoreManager scoreManager; // Need to add a ScoreManager object, so you have access to that script's functions
 
     private void IncreaseSize()
     {
