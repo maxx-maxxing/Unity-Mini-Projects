@@ -1,13 +1,16 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Spawner : MonoBehaviour
 {
-    [FormerlySerializedAs("_tree")] [SerializeField]
+    [SerializeField]
     private GameObject tree;
     
     [SerializeField]
     private int numberOfTrees;
+
+    [SerializeField] private float spawnOffset;
+    
+    
     void Start()
     {
         PrintTrees(numberOfTrees);
@@ -15,18 +18,12 @@ public class Spawner : MonoBehaviour
 
     
     
-    void PrintTrees(int numberOfTrees)
+    void PrintTrees(int trees)
     {
-        for (int i = 0; i < numberOfTrees; i++)
+        for (int i = 0; i < trees; i++)
         {
-            if (i == 0)
-            {
-                Instantiate(tree, Vector3.zero, Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(tree, new Vector3((i * 1.5f), 0, 0), Quaternion.identity);
-            }
+            float x = spawnOffset * i;
+            Instantiate(tree, new Vector3(x, 0, 0), Quaternion.identity);
         }
     }
 }
